@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'features/projects/models/project.dart';
 void main() {
   runApp(const WorkFlowApp());
 }
@@ -98,25 +98,25 @@ class DashboardScreen extends StatelessWidget {
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});
 
-  final List<Map<String, dynamic>> projects = const [
-    {
-      'name': 'Mobile App',
-      'description': 'WorkFlow mobile application',
-      'taskCount': 8,
-      'color': Colors.indigo,
-    },
-    {
-      'name': 'Frontend Dashboard',
-      'description': 'Admin dashboard project',
-      'taskCount': 5,
-      'color': Colors.teal,
-    },
-    {
-      'name': 'Client Website',
-      'description': 'Company website improvements',
-      'taskCount': 12,
-      'color': Colors.orange,
-    },
+  final List<Project> projects = const [
+    Project(
+      id: '1',
+      name: 'Mobile App',
+      description: 'WorkFlow mobile application',
+      taskCount: 8,
+    ),
+    Project(
+      id: '2',
+      name: 'Frontend Dashboard',
+      description: 'Admin dashboard project',
+      taskCount: 5,
+    ),
+    Project(
+      id: '3',
+      name: 'Client Website',
+      description: 'Company website improvements',
+      taskCount: 12,
+    ),
   ];
 
   @override
@@ -132,14 +132,14 @@ class ProjectsScreen extends StatelessWidget {
           child: ListTile(
             contentPadding: const EdgeInsets.all(16),
             leading: CircleAvatar(
-              backgroundColor: project['color'],
+              backgroundColor: Colors.indigo,
               child: Text(
-                project['name'][0],
+                project.name[0],
                 style: const TextStyle(color: Colors.white),
               ),
             ),
             title: Text(
-              project['name'],
+              project.name,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -147,7 +147,7 @@ class ProjectsScreen extends StatelessWidget {
             subtitle: Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Text(
-                '${project['description']}\n${project['taskCount']} tasks',
+                '${project.description}\n${project.taskCount} tasks',
               ),
             ),
             trailing: const Icon(Icons.arrow_forward_ios),
