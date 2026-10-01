@@ -98,13 +98,63 @@ class DashboardScreen extends StatelessWidget {
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({super.key});
 
+  final List<Map<String, dynamic>> projects = const [
+    {
+      'name': 'Mobile App',
+      'description': 'WorkFlow mobile application',
+      'taskCount': 8,
+      'color': Colors.indigo,
+    },
+    {
+      'name': 'Frontend Dashboard',
+      'description': 'Admin dashboard project',
+      'taskCount': 5,
+      'color': Colors.teal,
+    },
+    {
+      'name': 'Client Website',
+      'description': 'Company website improvements',
+      'taskCount': 12,
+      'color': Colors.orange,
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Your projects will appear here',
-        style: TextStyle(fontSize: 18),
-      ),
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: projects.length,
+      itemBuilder: (context, index) {
+        final project = projects[index];
+
+        return Card(
+          margin: const EdgeInsets.only(bottom: 12),
+          child: ListTile(
+            contentPadding: const EdgeInsets.all(16),
+            leading: CircleAvatar(
+              backgroundColor: project['color'],
+              child: Text(
+                project['name'][0],
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+            title: Text(
+              project['name'],
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                '${project['description']}\n${project['taskCount']} tasks',
+              ),
+            ),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            isThreeLine: true,
+          ),
+        );
+      },
     );
   }
 }
