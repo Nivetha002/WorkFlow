@@ -260,4 +260,4 @@ Before release, verify:
 
 **[Nivetha]**
 
-- GitHub: [Your GitHub profile](https://github.com/Nivetha002)
+- GitHub:(https://github.com/Nivetha002)
